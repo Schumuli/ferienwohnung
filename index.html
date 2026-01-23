@@ -8,7 +8,6 @@
   #content { display: none; }
   input { padding: 8px; width: 200px; }
   button { padding: 8px 12px; margin-left: 10px; }
-  .hidden { display: none; }
 </style>
 </head>
 <body>
@@ -22,24 +21,24 @@
 <div id="content">
   <h2>Belegungskalender</h2>
 
-  <!-- GOOGLE SHEETS EINBETTUNG -->
+  <!-- GOOGLE KALENDER EINBETTUNG -->
   <iframe 
-    src="DEIN_GOOGLE_SHEET_LINK?widget=true&headers=false"
-    width="100%" height="400">
+    src="DEIN_GOOGLE_KALENDER_LINK"
+    style="border: 0" width="100%" height="600" frameborder="0" scrolling="no">
   </iframe>
 
   <h2>Buchungsanfrage</h2>
 
-  <!-- GOOGLE FORM EINBETTUNG -->
+  <!-- GOOGLE FORMULAR EINBETTUNG -->
   <iframe 
-    src="DEIN_GOOGLE_FORM_LINK?embedded=true"
-    width="100%" height="600">
+    src="DEIN_GOOGLE_FORMULAR_LINK"
+    width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
   </iframe>
 </div>
 
 <script>
 function checkCode() {
-  const correct = "Gomera?Buchung!"; // <<< HIER DEIN CODEWORT
+  const correct = "Gomera?Buchung!"; // <<< DEIN CODEWORT
   const input = document.getElementById("code").value;
 
   if (input === correct) {
@@ -52,5 +51,3 @@ function checkCode() {
 
 </body>
 </html>
-
-
