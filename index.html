@@ -16,7 +16,7 @@
 <h1>Familien-Ferienwohnung</h1>
 
 <h3>Bitte Codewort eingeben</h3>
-<input type="Gomera?Buchung!" id="code">
+<input type="password" id="code">
 <button onclick="checkCode()">OK</button>
 
 <div id="content">
@@ -39,7 +39,7 @@
 
 <script>
 function checkCode() {
-  const correct = "ferienwohnung"; // <<< HIER DEIN CODEWORT
+  const correct = "Gomera?Buchung!"; // <<< HIER DEIN CODEWORT
   const input = document.getElementById("code").value;
 
   if (input === correct) {
@@ -52,4 +52,5 @@ function checkCode() {
 
 </body>
 </html>
+
 
