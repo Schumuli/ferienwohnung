@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Familien-Ferienwohnung</title>
+<style>
+  body { font-family: Arial; max-width: 800px; margin: 20px auto; }
+  #content { display: none; }
+  input { padding: 8px; width: 200px; }
+  button { padding: 8px 12px; margin-left: 10px; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<h1>Familien-Ferienwohnung</h1>
+
+<h3>Bitte Codewort eingeben</h3>
+<input type="password" id="code">
+<button onclick="checkCode()">OK</button>
+
+<div id="content">
+  <h2>Belegungskalender</h2>
+
+  <!-- GOOGLE SHEETS EINBETTUNG -->
+  <iframe 
+    src="DEIN_GOOGLE_SHEET_LINK?widget=true&headers=false"
+    width="100%" height="400">
+  </iframe>
+
+  <h2>Buchungsanfrage</h2>
+
+  <!-- GOOGLE FORM EINBETTUNG -->
+  <iframe 
+    src="DEIN_GOOGLE_FORM_LINK?embedded=true"
+    width="100%" height="600">
+  </iframe>
+</div>
+
+<script>
+function checkCode() {
+  const correct = "ferienwohnung"; // <<< HIER DEIN CODEWORT
+  const input = document.getElementById("code").value;
+
+  if (input === correct) {
+    document.getElementById("content").style.display = "block";
+  } else {
+    alert("Falsches Codewort");
+  }
+}
+</script>
+
+</body>
+</html>
