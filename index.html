@@ -136,7 +136,7 @@ button:active {
 .iframe-wrapper {
   width: 100%;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: hidden; /* FIX 1: verhindert horizontales Scrollen */
 }
 
 iframe {
@@ -153,6 +153,16 @@ iframe {
 /* Formular */
 .form iframe {
   height: 1200px;
+}
+
+/* FIX 2: Soft-Scaling für sehr schmale Geräte */
+@media (max-width: 380px) {
+  .calendar iframe {
+    transform: scale(0.92);
+    transform-origin: top left;
+    width: 108%;
+    height: 650px;
+  }
 }
 
 @media (min-width: 768px) {
