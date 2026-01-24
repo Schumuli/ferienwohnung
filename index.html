@@ -136,7 +136,7 @@ button:active {
 .iframe-wrapper {
   width: 100%;
   border-radius: 12px;
-  overflow: visible;
+  overflow: hidden;
 }
 
 iframe {
@@ -144,8 +144,16 @@ iframe {
   border: none;
 }
 
-.calendar iframe { height: 500px; }
-.form iframe { height: 1200px; }
+/* Mobile-optimierter Kalender */
+.calendar iframe {
+  height: 600px;
+  border-radius: 12px;
+}
+
+/* Formular */
+.form iframe {
+  height: 1200px;
+}
 
 @media (min-width: 768px) {
   .app { max-width: 720px; }
@@ -192,10 +200,27 @@ iframe {
     <div class="card calendar">
       <div class="section-title">Belegungskalender</div>
       <div class="iframe-wrapper">
-        <iframe 
-          src="https://calendar.google.com/calendar/embed?src=ce2be12e5a92c966753683f9ed07bda4e1ae3f60b9c15cd1586652b81121a46f%40group.calendar.google.com&ctz=Europe/Berlin"
+
+        <!-- MOBILE-OPTIMIERTER KALENDER -->
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600
+          &wkst=1
+          &ctz=Europe%2FBerlin
+          &showPrint=0
+          &showCalendars=0
+          &showTz=0
+          &showTabs=0
+          &showTitle=0
+          &showNav=0
+          &showDate=0
+          &showWeekends=0
+          &bgcolor=%23f2f0eb
+          &src=Y2UyYmUxMmU1YTkyYzk2Njc1MzY4M2Y5ZWQwN2JkYTRlMWFlM2Y2MGI5YzE1Y2QxNTg2NjUyYjgxMTIxYTQ2ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t
+          &color=%233a5f5f"
+          style="border-width:0;"
           scrolling="no">
         </iframe>
+
       </div>
     </div>
 
