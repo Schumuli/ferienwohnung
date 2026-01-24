@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ferienwohnung</title>
+<title>Ferienwohnung – Verwaltung</title>
 
 <style>
 :root {
@@ -89,15 +89,16 @@ header {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  font-size: 20px;
-  opacity: 0.7;
-  user-select: none;
-  padding: 8px; /* WICHTIG: große Touchfläche für Mobile */
+  padding: 8px;
   border-radius: 6px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.pw-toggle:active {
-  opacity: 1;
+.pw-toggle svg {
+  pointer-events: none;
 }
 
 button {
@@ -165,7 +166,21 @@ iframe {
 
     <div class="pw-wrapper">
       <input type="password" id="code" placeholder="Codewort">
-      <span class="pw-toggle" onclick="togglePassword()">👁️</span>
+
+      <span class="pw-toggle" onclick="togglePassword()">
+        <!-- Auge offen -->
+        <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+
+        <!-- Auge geschlossen -->
+        <svg id="eye-closed" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.77 21.77 0 0 1 5.06-5.94"/>
+          <path d="M1 1l22 22"/>
+          <path d="M9.88 9.88A3 3 0 0 0 12 15a3 3 0 0 0 2.12-.88"/>
+        </svg>
+      </span>
     </div>
 
     <button onclick="checkCode()">Weiter</button>
@@ -213,14 +228,17 @@ function checkCode() {
 
 function togglePassword() {
   const field = document.getElementById("code");
-  const icon = document.querySelector(".pw-toggle");
+  const eyeOpen = document.getElementById("eye-open");
+  const eyeClosed = document.getElementById("eye-closed");
 
   if (field.type === "password") {
     field.type = "text";
-    icon.textContent = "🙈";
+    eyeOpen.style.display = "none";
+    eyeClosed.style.display = "block";
   } else {
     field.type = "password";
-    icon.textContent = "👁️";
+    eyeOpen.style.display = "block";
+    eyeClosed.style.display = "none";
   }
 }
 </script>
