@@ -7,9 +7,9 @@
 
 <style>
 :root {
-  --primary: #3a5f5f;        /* edles Grün-Grau */
+  --primary: #3a5f5f;
   --primary-light: #4f7a7a;
-  --bg: #f2f0eb;             /* warmes Beige */
+  --bg: #f2f0eb;
   --card: #ffffff;
   --text: #1f1f1f;
   --radius: 14px;
@@ -60,9 +60,16 @@ header {
   transform: translateY(-2px);
 }
 
-input {
+/* Passwortfeld mit Auge */
+.pw-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.pw-wrapper input {
   width: 100%;
   padding: 14px;
+  padding-right: 50px;
   font-size: 15px;
   border-radius: 10px;
   border: 1px solid #ccc;
@@ -70,10 +77,27 @@ input {
   background: #fafafa;
 }
 
-input:focus {
+.pw-wrapper input:focus {
   outline: none;
   border-color: var(--primary);
   background: #fff;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  opacity: 0.7;
+  user-select: none;
+  padding: 8px; /* WICHTIG: große Touchfläche für Mobile */
+  border-radius: 6px;
+}
+
+.pw-toggle:active {
+  opacity: 1;
 }
 
 button {
@@ -122,15 +146,6 @@ iframe {
 .calendar iframe { height: 500px; }
 .form iframe { height: 1200px; }
 
-label {
-  font-size: 14px;
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-}
-
 @media (min-width: 768px) {
   .app { max-width: 720px; }
 }
@@ -148,12 +163,10 @@ label {
     <h3 style="margin-top:0;font-weight:600;">Zugang</h3>
     <p>Bitte Codewort eingeben, um den internen Bereich zu öffnen.</p>
 
-    <input type="password" id="code" placeholder="Codewort">
-
-    <label>
-      <input type="checkbox" id="togglePw" onclick="togglePassword()">
-      Codewort anzeigen
-    </label>
+    <div class="pw-wrapper">
+      <input type="password" id="code" placeholder="Codewort">
+      <span class="pw-toggle" onclick="togglePassword()">👁️</span>
+    </div>
 
     <button onclick="checkCode()">Weiter</button>
   </div>
@@ -200,7 +213,15 @@ function checkCode() {
 
 function togglePassword() {
   const field = document.getElementById("code");
-  field.type = field.type === "password" ? "text" : "password";
+  const icon = document.querySelector(".pw-toggle");
+
+  if (field.type === "password") {
+    field.type = "text";
+    icon.textContent = "🙈";
+  } else {
+    field.type = "password";
+    icon.textContent = "👁️";
+  }
 }
 </script>
 
