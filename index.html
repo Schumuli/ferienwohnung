@@ -2,56 +2,160 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ferienwohnung</title>
+
 <style>
-  body { font-family: Arial; max-width: 800px; margin: 20px auto; }
-  #content { display: none; }
-  input { padding: 8px; width: 200px; }
-  button { padding: 8px 12px; margin-left: 10px; }
-</style>
-</head>
-<body>
+:root {
+  --primary: #2a7fff;
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #222;
+  --radius: 16px;
+}
 
-<h1>Ferienwohnung</h1>
+* {
+  box-sizing: border-box;
+}
 
-<h3>Bitte Codewort eingeben</h3>
-<input type="password" id="code">
-<button onclick="checkCode()">OK</button>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
-<div id="content">
-  <h2>Belegungskalender</h2>
+/* App Container */
+.app {
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
 
-  <!-- GOOGLE KALENDER EINBETTUNG -->
-  <iframe 
-    src="https://calendar.google.com/calendar/embed?src=ce2be12e5a92c966753683f9ed07bda4e1ae3f60b9c15cd1586652b81121a46f%40group.calendar.google.com&ctz=UTC"
-    style="border: 0" width="100%" height="600" frameborder="0" scrolling="no">
-  </iframe>
+/* Header */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-  <h2>Buchungsanfrage</h2>
+/* Card */
+.card {
+  background: var(--card);
+  margin: 16px;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
 
-  <!-- GOOGLE FORMULAR EINBETTUNG -->
-  <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLSc9gQQR4_FUBeG7uQBEVN7xhhKpj10Jpp42Ooo-EpMjaBTJDQ/viewform?usp=publish-editor"
-    width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
-  </iframe>
-</div>
+/* Login */
+.login h3 {
+  margin-top: 0;
+}
 
-<script>
-function checkCode() {
-  const correct = "Gomera?Buchung!"; // <<< DEIN CODEWORT
-  const input = document.getElementById("code").value;
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
 
-  if (input === correct) {
-    document.getElementById("content").style.display = "block";
-  } else {
-    alert("Falsches Codewort");
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#content {
+  display: none;
+}
+
+/* Sections */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* iFrame Wrapper */
+.iframe-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+iframe {
+  width: 100%;
+  border: none;
+}
+
+/* Kalender größer */
+.calendar iframe {
+  height: 500px;
+}
+
+/* Formular */
+.form iframe {
+  height: 600px;
+}
+
+/* Desktop Bonus */
+@media (min-width: 768px) {
+  .app {
+    max-width: 700px;
   }
 }
-</script>
+</style>
+</head>
 
-</body>
-</html>
+<body>
 
+<div class="app">
 
+  <header>🏡 Ferienwohnung</header>
 
+  <!-- Login Card -->
+  <div class="card login">
+    <h3>🔒 Zugriff</h3>
+    <p>Bitte Codewort eingeben</p>
+    <input type="password" id="code" placeholder="Codewort">
+    <button onclick="checkCode()">Freischalten</button>
+  </div>
 
+  <!-- Content -->
+  <div id="content">
+
+    <div class="card calendar">
+      <div class="section-title">📅 Belegungskalender</div>
+      <div class="iframe-wrapper">
+        <iframe 
+          src="https://calendar.google.com/calendar/embed?src=ce2be12e5a92c966753683f9ed07bda4e1ae3f60b9c15cd1586652b81121a46f%40group.calendar.google.com&ctz=UTC"
+          scrolling="no">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="card form">
+      <div class="section-title">✍️ Buchungsanfrage</div>
+      <div class="iframe-wrapper">
+        <iframe 
+          src="https://d
