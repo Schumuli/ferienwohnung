@@ -83,8 +83,8 @@ button:active { transform: scale(0.98); }
 
 .iframe-wrapper {
   width: 100%;
-  overflow: hidden;
   border-radius: 12px;
+  overflow: visible; /* WICHTIG: Formular darf scrollen */
 }
 
 iframe {
@@ -93,7 +93,9 @@ iframe {
 }
 
 .calendar iframe { height: 500px; }
-.form iframe { height: 600px; }
+
+/* Formular groß genug machen */
+.form iframe { height: 1200px; }
 
 @media (min-width: 768px) {
   .app { max-width: 700px; }
@@ -133,7 +135,7 @@ iframe {
       <div class="iframe-wrapper">
         <iframe 
           src="https://docs.google.com/forms/d/e/1FAIpQLSc9gQQR4_FUBeG7uQBEVN7xhhKpj10Jpp42Ooo-EpMjaBTJDQ/viewform?usp=header"
-          scrolling="no">
+          scrolling="auto">
         </iframe>
       </div>
     </div>
@@ -146,7 +148,6 @@ iframe {
 function checkCode() {
   const input = document.getElementById("code").value.trim();
 
-  // Dein Codewort hier eintragen
   const correct = "Gomera?Buchung!";
 
   if (input === correct) {
