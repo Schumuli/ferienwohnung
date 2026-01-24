@@ -14,9 +14,7 @@
   --radius: 16px;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -25,14 +23,12 @@ body {
   color: var(--text);
 }
 
-/* App Container */
 .app {
   max-width: 420px;
   margin: 0 auto;
   min-height: 100vh;
 }
 
-/* Header */
 header {
   background: var(--primary);
   color: white;
@@ -45,18 +41,12 @@ header {
   z-index: 10;
 }
 
-/* Card */
 .card {
   background: var(--card);
   margin: 16px;
   padding: 20px;
   border-radius: var(--radius);
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-}
-
-/* Login */
-.login h3 {
-  margin-top: 0;
 }
 
 input {
@@ -81,22 +71,16 @@ button {
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.98);
-}
+button:active { transform: scale(0.98); }
 
-#content {
-  display: none;
-}
+#content { display: none; }
 
-/* Sections */
 .section-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
 }
 
-/* iFrame Wrapper */
 .iframe-wrapper {
   width: 100%;
   overflow: hidden;
@@ -108,21 +92,11 @@ iframe {
   border: none;
 }
 
-/* Kalender größer */
-.calendar iframe {
-  height: 500px;
-}
+.calendar iframe { height: 500px; }
+.form iframe { height: 600px; }
 
-/* Formular */
-.form iframe {
-  height: 600px;
-}
-
-/* Desktop Bonus */
 @media (min-width: 768px) {
-  .app {
-    max-width: 700px;
-  }
+  .app { max-width: 700px; }
 }
 </style>
 </head>
@@ -133,7 +107,7 @@ iframe {
 
   <header>🏡 Ferienwohnung</header>
 
-  <!-- Login Card -->
+  <!-- Login -->
   <div class="card login">
     <h3>🔒 Zugriff</h3>
     <p>Bitte Codewort eingeben</p>
@@ -148,7 +122,7 @@ iframe {
       <div class="section-title">📅 Belegungskalender</div>
       <div class="iframe-wrapper">
         <iframe 
-          src="https://calendar.google.com/calendar/embed?src=ce2be12e5a92c966753683f9ed07bda4e1ae3f60b9c15cd1586652b81121a46f%40group.calendar.google.com&ctz=UTC"
+          src="https://calendar.google.com/calendar/embed?src=ce2be12e5a92c966753683f9ed07bda4e1ae3f60b9c15cd1586652b81121a46f%40group.calendar.google.com&ctz=Europe/Berlin"
           scrolling="no">
         </iframe>
       </div>
@@ -158,4 +132,31 @@ iframe {
       <div class="section-title">✍️ Buchungsanfrage</div>
       <div class="iframe-wrapper">
         <iframe 
-          src="https://d
+          src="https://docs.google.com/forms/d/e/1FAIpQLSc9gQQR4_FUBeG7uQBEVN7xhhKpj10Jpp42Ooo-EpMjaBTJDQ/viewform?usp=header"
+          scrolling="no">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function checkCode() {
+  const input = document.getElementById("code").value.trim();
+
+  // Dein Codewort hier eintragen
+  const correct = "Gomera?Buchung!";
+
+  if (input === correct) {
+    document.querySelector(".login").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  } else {
+    alert("Falsches Codewort");
+  }
+}
+</script>
+
+</body>
+</html>
