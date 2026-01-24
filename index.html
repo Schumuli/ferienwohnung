@@ -84,7 +84,7 @@ button:active { transform: scale(0.98); }
 .iframe-wrapper {
   width: 100%;
   border-radius: 12px;
-  overflow: visible; /* WICHTIG: Formular darf scrollen */
+  overflow: visible; /* Formular darf scrollen */
 }
 
 iframe {
@@ -113,7 +113,14 @@ iframe {
   <div class="card login">
     <h3>🔒 Zugriff</h3>
     <p>Bitte Codewort eingeben</p>
+
     <input type="password" id="code" placeholder="Codewort">
+
+    <label style="display:flex;align-items:center;margin-top:10px;cursor:pointer;">
+      <input type="checkbox" id="togglePw" style="margin-right:8px;" onclick="togglePassword()">
+      Codewort anzeigen
+    </label>
+
     <button onclick="checkCode()">Freischalten</button>
   </div>
 
@@ -147,7 +154,6 @@ iframe {
 <script>
 function checkCode() {
   const input = document.getElementById("code").value.trim();
-
   const correct = "Gomera?Buchung!";
 
   if (input === correct) {
@@ -156,6 +162,11 @@ function checkCode() {
   } else {
     alert("Falsches Codewort");
   }
+}
+
+function togglePassword() {
+  const field = document.getElementById("code");
+  field.type = field.type === "password" ? "text" : "password";
 }
 </script>
 
